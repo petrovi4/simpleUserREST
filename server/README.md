@@ -1,5 +1,9 @@
 # Simple User REST Service
 
+## Demo
+Here https://simple-user-rest-demo.talkan.name
+
+
 ## 0. Environment
 For the service to work, you must have an installed Node.js
 Choose your platform here: https://nodejs.org/en/download/package-manager/
@@ -17,10 +21,11 @@ npm i
 
 ## 3. Create JWT keys
 
+```bash
 ssh-keygen -t rsa -b 4096 -m PEM -f jwtRS256.key
 # Don't add passphrase
 openssl rsa -in jwtRS256.key -pubout -outform PEM -out jwtRS256.key.pub
-
+```
 
 ## 4. Initialize database
 
@@ -46,3 +51,4 @@ npm start
 ## Configuration
 
 Default port - 8080. Can be changed in the config
+

@@ -1,5 +1,10 @@
 # Simple User REST Service
 
+
+## Demo
+Here https://simple-user-rest-demo.talkan.name
+
+
 ## 0. Environment
 For the service to work, you must have an installed Node.js
 Choose your platform here: https://nodejs.org/en/download/package-manager/
@@ -14,6 +19,7 @@ git clone git@github.com:petrovi4/simpleUserREST.git simpleUserREST && cd simple
 
 ## 2. Setup backend from folder server
 See folder server from this repo
+
 
 
 ## 3. Setup dependencies
@@ -33,4 +39,5 @@ Base URL http://localhost:8082/
 
 
 ## Configuration
-Configuration stored in filtes webpack/dev.js (for development) and webpack/prod.js (for production)
+Configuration stored in files webpack/dev.js (for development) and webpack/prod.js (for production)
+
