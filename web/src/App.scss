@@ -1,0 +1,14 @@
+// Styles
+
+// Import Font Awesome Icons Set
+@import '~font-awesome/css/font-awesome.min.css';
+
+.app {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.hand {
+	cursor: pointer;
+}

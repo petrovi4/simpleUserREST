@@ -1,0 +1,36 @@
+module.exports = {
+	parser: 'babel-eslint',
+
+	root: true,
+	env: {
+		node: true,
+		es6: true,
+	},
+	settings: {},
+	plugins: ['babel', 'import'],
+	extends: ['eslint:recommended', 'plugin:import/errors', 'plugin:jest/recommended'],
+
+	rules: {
+		'array-element-newline': ['error', 'consistent'],
+		'arrow-parens': ['error', 'as-needed'],
+		'babel/no-invalid-this': 'error',
+		'brace-style': ['error', 'stroustrup'],
+		'comma-dangle': ['error', 'always-multiline'],
+		'eol-last': ['error', 'always'],
+		'global-require': ['error'],
+		indent: ['error', 'tab', { SwitchCase: 1 }],
+		'new-parens': ['error'],
+		'no-console': 'off',
+		'no-invalid-this': ['error'],
+		'no-multiple-empty-lines': ['error', { max: 3 }],
+		'no-trailing-spaces': 'error',
+		'no-unused-vars': ['error', { argsIgnorePattern: '^_dummy' }],
+		'nonblock-statement-body-position': ['error', 'beside'],
+		'one-var': ['error', 'never'],
+		'quote-props': ['error', 'as-needed'],
+		'no-unreachable': 'off',
+		quotes: ['error', 'single'],
+		semi: ['error', 'always'],
+		strict: ['error', 'global'],
+	},
+};
