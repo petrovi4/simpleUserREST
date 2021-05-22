@@ -1,7 +1,7 @@
 {
 	"name": "simple-user-rest-front",
 	"version": "1.0.0",
-	"description": "Foxty Web App for Partners",
+	"description": "Simple User REST Web App",
 	"private": true,
 	"scripts": {
 		"build": "PROXY_KEY=local NODE_ENV=production APP_CONFIG=appConfig.js webpack --config webpack/prod.js",
