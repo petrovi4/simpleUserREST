@@ -9,7 +9,7 @@ const publicKey = readFileSync(join(__dirname, '../../jwtRS256.key.pub'));
 
 export function hashPassword(login, password) {
 	if ('string' !== typeof login || 'string' !== typeof password) throw new Error('Wrong login or password');
-	if (process.env.SALT) throw new Error('SALT not defined');
+	if (!process.env.SALT) throw new Error('SALT not defined');
 	var hpassword = createHash('sha1')
 		.update(login.trim().toLowerCase() + password + process.env.SALT)
 		.digest('hex');
@@ -27,8 +27,7 @@ export function parseUser(req, _res, next) {
 			if (!err && (!decoded || !decoded.user || !decoded.xsrfToken)) err = new Error('Wrong Token Structure: ' + decoded);
 			else if (!err && xsrfToken != decoded.xsrfToken) err = new Error('Wrong xxsrftoken: ' + xsrfToken + ':' + decoded);
 
-			if (err) console.error(err);
-			else req.user = decoded?.user;
+			if (!err) req.user = decoded?.user;
 
 			next();
 		});

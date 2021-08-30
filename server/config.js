@@ -1,7 +1,6 @@
 const path = require('path');
 
 exports.maxCPUs = 1;
-exports.port = 8080;
 
 exports.db = {
 	development: {

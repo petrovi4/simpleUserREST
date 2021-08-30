@@ -1,9 +1,13 @@
 import cluster from 'cluster';
 import { cpus } from 'os';
 
-import { port, maxCPUs } from '../config';
+import { maxCPUs } from '../config';
 
 import app from './app';
+
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const cCPUs = cpus().length;
 const workers = Math.min(cCPUs, maxCPUs || 999);
@@ -40,7 +44,7 @@ function main() {
 			// Do some stuff in child process
 		});
 
-		app.listen(port, () => console.log('Simple REST server listening', { port }));
+		app.listen(process.env.PORT, () => console.log('Simple REST server listening on port ' + process.env.PORT));
 	}
 }
 

@@ -55,6 +55,7 @@ export async function registerNaive({ name, email, password }) {
 
 
 		.catch(err => {
+			console.error(err);
 			// Catch error, process, save and notify admin
 			throw err;
 		});
@@ -101,6 +102,7 @@ export async function login({ email, password }) {
 
 
 		.catch(err => {
+			console.error(err);
 			// Catch error, process, save and notify admin
 			throw err;
 		});
@@ -123,6 +125,7 @@ export async function logout({ id } = {}) {
 
 
 		.catch(err => {
+			console.error(err);
 			// Catch error, process, save and notify admin
 			throw err;
 		});
@@ -148,6 +151,7 @@ export async function getOne({ id }) {
 
 
 		.catch(err => {
+			console.error(err);
 			// Catch error, process, save and notify admin
 			throw err;
 		});

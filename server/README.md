@@ -43,7 +43,7 @@ cp empty.sqlite prod.sqlite
 
 ## 5. Specify environment variables
 ```bash
-echo "SALT=\"$(openssl rand -hex 12)\"" > .env
+echo "SALT=\"$(openssl rand -hex 12)\"\nPORT=8080" > .env
 ```
 
 

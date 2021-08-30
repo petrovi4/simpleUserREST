@@ -15,7 +15,7 @@ let webPackConfig = merge(common, {
 	devtool: 'source-map',
 	devServer: {
 		host: '0.0.0.0',
-		port: 8082,
+		port: process.env.PORT,
 		contentBase: paths.dist,
 		writeToDisk: false,
 		historyApiFallback: true,
