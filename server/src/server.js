@@ -22,7 +22,7 @@ function forkWorker() {
 }
 
 function main() {
-	if (cluster.isMaster && process.env.THREADS !== 'single') {
+	if (cluster.isPrimary && process.env.THREADS !== 'single') {
 		cluster.on('online', worker => {
 			console.log('Worker is online', { workerProcessPID: worker.process.pid });
 		});

@@ -191,6 +191,17 @@ describe('successful web registration and login/logout', () => {
 	});
 
 
+	test('user with bad credentions will return an authorization error', async () => {
+		let res = await request(app)
+			.post('/api/v1.0/users/login')
+			.send({ email: user.email, password: user.password + '_badPostfix' });
+
+		expect(res.statusCode).toBe(500);
+		expect(res.type).toMatch(/json/);
+		expect(res.body?.status).toBe('error');
+	});
+
+
 	test('web login', async () => {
 		let res = await request(app)
 			.post('/api/v1.0/users/login')

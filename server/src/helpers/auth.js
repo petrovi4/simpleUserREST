@@ -6,17 +6,19 @@ import { readFileSync } from 'fs';
 const privateKey = readFileSync(join(__dirname, '../../jwtRS256.key'));
 const publicKey = readFileSync(join(__dirname, '../../jwtRS256.key.pub'));
 
-export function hashPassword(login, password, salt) {
-	salt = salt || randomBytes(10).toString('hex');
+
+export function hashPassword(login, password) {
+	if ('string' !== typeof login || 'string' !== typeof password) throw new Error('Wrong login or password');
+	if (process.env.SALT) throw new Error('SALT not defined');
 	var hpassword = createHash('sha1')
-		.update(login + password + salt)
+		.update(login.trim().toLowerCase() + password + process.env.SALT)
 		.digest('hex');
-	return { hpassword, salt };
+	return hpassword;
 }
 
 
 // Parse JSON Web Token, build user and fill request with authenticated user
-export function parseUser(req, res, next) {
+export function parseUser(req, _res, next) {
 	let xsrfToken = req.headers && req.headers['x-xsrf-token-user'];
 	const token = req.cookies && req.cookies['token-user'];
 

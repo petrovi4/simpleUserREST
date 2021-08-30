@@ -41,8 +41,13 @@ cp empty.sqlite prod.sqlite
 ```
 
 
+## 5. Specify environment variables
+```bash
+echo 'SALT="887dd0ade91f81d8974b9c774c73b69869d252a8"' > .env
+```
 
-## 4. Start project
+
+## 6. Start project
 ```bash
 npm start
 ```

@@ -106,6 +106,12 @@ describe('successful registration', () => {
 		await expect(registerNaive(users[0])).rejects.toThrow();
 	});
 
+
+	test('not existing user can\'t be requested', async () => {
+		await expect(getOne({ id: -1 })).rejects.toThrow();
+		await expect(getOne({ id: 999 })).rejects.toThrow();
+	});
+
 });
 
 
@@ -120,7 +126,6 @@ describe('login and logout', () => {
 		password: '123qweasdzxc!',
 	}
 
-
 	test('register before login', async () => {
 		let { user: registeredUser, token, xsrfToken } = await registerNaive(user);
 
@@ -134,9 +139,7 @@ describe('login and logout', () => {
 
 
 	test('login with wrong password fails', async () => {
-		await expect(login({ email: user.email, password: user.password + '_' }))
-			.rejects
-			.toThrow();
+		await expect(login({ email: user.email, password: user.password + '_' })).rejects.toThrow();
 	});
 
 
@@ -147,6 +150,11 @@ describe('login and logout', () => {
 		expect(loggedInUser.name).toBe(user.name);
 		expect(loggedInUser.email).toBe(user.email);
 		expect(loggedInUser.password).not.toBeDefined();
+	});
+
+
+	test('logout fails with wrong id', async () => {
+		await expect(logout()).rejects.toThrow();
 	});
 
 

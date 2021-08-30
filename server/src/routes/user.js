@@ -3,16 +3,11 @@ import { Router } from 'express';
 import { registerNaive, getOne, login, logout } from '../controllers/user';
 
 import { auth } from '../helpers/auth';
-import { errorRes, successRes } from '../helpers/responses';
+import { errorRes, pick, successRes } from '../helpers/responses';
 
 const userRouter = Router();
 
-const userSerializer = user => ({
-	id: user.id,
-	name: user.name,
-	email: user.email,
-	created: user.created,
-});
+const userSerializer = user => pick(user, 'id', 'name', 'email', 'created');
 
 
 userRouter.post('/', ({ body: { name, email, password } = {} }, res) => {

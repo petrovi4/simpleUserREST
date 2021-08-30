@@ -1,5 +1,4 @@
 import Express from 'express';
-import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
 import routes from './routes';
@@ -10,7 +9,7 @@ const app = Express();
 
 app.use(cookieParser());
 
-app.use(bodyParser.json({ limit: '10kb', type: 'json' }));
+app.use(Express.json({ limit: '10kb', type: 'json' }));
 
 app.use(parseUser);
 

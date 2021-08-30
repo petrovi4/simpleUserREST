@@ -34,13 +34,13 @@ export async function registerNaive({ name, email, password }) {
 		.then(async () => {
 			// Creating a user and saving it in the database
 
-			const { hpassword, salt } = hashPassword(email, password);
+			const hpassword = hashPassword(email, password);
 
 			return await User.create({
 				name,
 				email,
 				hpassword,
-				salt,
+				created: Date().toString()
 			});
 		})
 
@@ -81,10 +81,10 @@ export async function login({ email, password }) {
 		.then(async () => {
 			// Check is password correct
 
-			const existingUser = await User.findOne({ where: { email }, attributes: ['id', 'name', 'email', 'salt', 'hpassword'] });
+			const existingUser = await User.findOne({ where: { email }, attributes: ['id', 'name', 'email', 'hpassword'] });
 			if (!existingUser) throw new Error('User with this email not registered');
 
-			const { hpassword: hpasswordPassed } = hashPassword(email, password, existingUser.salt);
+			const hpasswordPassed = hashPassword(email, password);
 			if (existingUser.hpassword !== hpasswordPassed) throw new Error('Bad password for existing user');
 
 			return existingUser;
@@ -111,9 +111,7 @@ export async function login({ email, password }) {
 export async function logout({ id } = {}) {
 
 	return new Promise(resolve => {
-
 		if (!id) throw new Error('No user id');
-
 		resolve();
 	})
 
@@ -143,7 +141,7 @@ export async function getOne({ id }) {
 
 		.then(async () => {
 			const user = await User.findByPk(id, { attributes: ['id', 'name', 'email'] });
-			if (!user) throw new User('User not found');
+			if (!user) throw new Error('User not found');
 
 			return user;
 		})

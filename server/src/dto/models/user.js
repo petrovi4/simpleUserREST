@@ -8,7 +8,6 @@ export default sequelize => {
 		email: { type: DataTypes.STRING, allowNull: false, comment: 'User\'s email' },
 		name: { type: DataTypes.STRING, allowNull: false, comment: 'User\'s name' },
 		hpassword: { type: DataTypes.STRING, allowNull: false, comment: 'Hashed password' },
-		salt: { type: DataTypes.STRING, allowNull: false, comment: 'Hashed password\'s salt' },
 	}, {
 		sequelize,
 		modelName: 'User',
