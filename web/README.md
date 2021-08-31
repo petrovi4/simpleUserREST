@@ -30,7 +30,7 @@ npm i
 
 ## 4. Specify environment variables for development
 ```bash
-echo "PORT=8080" > .env
+echo "PORT=8082" > .env
 ```
 
 
